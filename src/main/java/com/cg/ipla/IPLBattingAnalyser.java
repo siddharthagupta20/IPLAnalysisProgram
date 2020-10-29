@@ -34,19 +34,10 @@ public class IPLBattingAnalyser {
 		return null;
 	}
 
-	public List<BattingData> sortingAverageWise() {
-		
-		return batsmenList.stream().sorted(BattingSortBy.COMPARATOR_BEST_AVG).collect(Collectors.toList());
+	public List<BattingData> sortingBatsmenOrder(Comparator<BattingData> comparator) {
+		return batsmenList.stream()
+							.sorted(comparator)
+							.collect(Collectors.toList());
 
-	}
-
-	public List<BattingData> sortingStrinkingRateWise() {
-		
-		return batsmenList.stream().sorted(BattingSortBy.COMPARATOR_STRIKE_RATE).collect(Collectors.toList());
-
-	}
-
-	public List<BattingData> sortingMax4sAnd6sWise() {
-		return batsmenList.stream().sorted(BattingSortBy.COMPARATOR_4S_AND_6S).collect(Collectors.toList());
 	}
 }
