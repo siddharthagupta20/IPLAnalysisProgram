@@ -7,6 +7,10 @@ import com.cg.ipla.dto.AllRounder;
 public class AllRounderSortBy {
 	
 	public static final Comparator<AllRounder> BEST_BATTING_AND_BOWLING_AVG = Comparator.comparing(player -> player.getAverageRuns() + player.getAverageWickets());
+	
+	public static final Comparator<AllRounder> MAX_RUNS=Comparator.comparing(AllRounder::getRuns);
+	
+	public static final Comparator<AllRounder> MAX_WICKETS=Comparator.comparing(AllRounder::getWickets);
 
 	public static Comparator<AllRounder> addConditionsInOrder(Comparator<AllRounder>...comparators ){
 		if(comparators.length==0)
