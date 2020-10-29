@@ -35,19 +35,24 @@ public class IPLBattingAnalyserTest {
 	@Test
 	public void givenBattingData_ShouldReturnBatsmenWithBestAverage() {
 		
-		List<BattingData> batsmen=iplAnalyser.batsmenWithBestAverage(); 
+		List<BattingData> batsmen=iplAnalyser.sortingBatsmen(BattingSortBy.BEST_AVG);
 		assertEquals("13",batsmen.get(100).getPosition());
 		
 	}
 	@Test
 	public void givenBattingData_ShouldReturnBatmenWithMostStrikingRates() {
-		List<BattingData> batsmen=iplAnalyser.batsmenWithMostStrikingRates();
+		List<BattingData> batsmen=iplAnalyser.sortingBatsmen(BattingSortBy.BEST_STRIKE_RATE);
 		assertEquals("97", batsmen.get(100).getPosition());
 	}
 	@Test
 	public void givenBattingData_ShouldReturnBatsmenWithMax6sAnd4s() {
-		List<BattingData> batsmen=iplAnalyser.batsmenWithMax6sAnd4s();
+		List<BattingData> batsmen=iplAnalyser.sortingBatsmen(BattingSortBy.MAX_4S_AND_6S);
 		assertEquals("5",batsmen.get(100).getPosition());
 		
+	}
+	@Test
+	public void givenBattingData_ShouldReturnBatsmenWithBestStrikingRateWith6sAnd4s() {
+		List<BattingData> batsmen=iplAnalyser.sortingBatsmen(BattingSortBy.BEST_STRIKE_RATE,BattingSortBy.MAX_4S_AND_6S);
+		assertEquals("97",batsmen.get(100).getPosition());
 	}
 }

@@ -1,6 +1,7 @@
 package com.cg.ipla;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import com.cg.ipla.dto.BattingData;
@@ -32,19 +33,14 @@ public class IPLAnalyserService {
 
 	}
 
-	public ArrayList<BattingData> batsmenWithBestAverage() {
-		return (ArrayList<BattingData>)iplBatting.sortingAverageWise();
+	public ArrayList<BattingData> sortingBatsmen(Comparator<BattingData>... comparators) {
+		Comparator<BattingData> comparator=BattingSortBy.addConditionsInOrder(comparators);
+		return (ArrayList<BattingData>) iplBatting.sortingBatsmenOrder(comparator);
+	}
+	public<E> void printData(ArrayList<E> list) {
+		list.stream().forEach(System.out::println);
+		
 	}
 
-	public <E> void printData(List<E> listToPrint) {
-		listToPrint.stream().forEach(System.out::println);
-	}
-
-	public ArrayList<BattingData> batsmenWithMostStrikingRates() {
-		return (ArrayList<BattingData>)iplBatting.sortingStrinkingRateWise();
-	}
-	public List<BattingData> batsmenWithMax6sAnd4s() {
-		return iplBatting.sortingMax4sAnd6sWise();
-	}
 
 }

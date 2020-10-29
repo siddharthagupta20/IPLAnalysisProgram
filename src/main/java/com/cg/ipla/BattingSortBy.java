@@ -6,12 +6,23 @@ import com.cg.ipla.dto.BattingData;
 
 public class BattingSortBy {
 
-	public static final Comparator<BattingData> COMPARATOR_BEST_AVG = Comparator.comparing(BattingData::getAverage);
+	public static final Comparator<BattingData> BEST_AVG = Comparator.comparing(BattingData::getAverage);
 
-	public static final Comparator<BattingData> COMPARATOR_STRIKE_RATE = Comparator
+	public static final Comparator<BattingData> BEST_STRIKE_RATE = Comparator
 			.comparing(BattingData::getStrikeRate);
 
-	public static final Comparator<BattingData> COMPARATOR_4S_AND_6S = Comparator
+	public static final Comparator<BattingData> MAX_4S_AND_6S = Comparator
 			.comparing(batsman -> batsman.getNoOfFours() + batsman.getNoOfSixes());
+	
+	public static Comparator<BattingData> addConditionsInOrder(Comparator<BattingData>...comparators){ 
+		if(comparators.length==0)
+			return null;
+		Comparator<BattingData> temp=comparators[0];
+		for(int i=1;i<comparators.length-1;i++){
+			temp=temp.thenComparing(comparators[i]);
+		}
+		return temp;
+		
+	}
 
 }
