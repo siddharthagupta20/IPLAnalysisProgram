@@ -60,4 +60,9 @@ public class IPLBattingAnalyserTest {
 		List<BattingData> batsmen=iplAnalyser.sortingBatsmen(BattingSortBy.BEST_STRIKE_RATE,BattingSortBy.BEST_AVG);
 		assertEquals("97",batsmen.get(100).getPosition());
 	}
+	@Test
+	public void givenBattingData_ShouldReturnBatsmenWithMaximumRunsWithGreatAverages() {
+		List<BattingData> batsmen=iplAnalyser.sortingBatsmen(BattingSortBy.MAX_RUNS,BattingSortBy.BEST_AVG);
+		assertEquals("1",batsmen.get(100).getPosition());
+	}
 }

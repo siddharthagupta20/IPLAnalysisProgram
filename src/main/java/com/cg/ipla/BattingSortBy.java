@@ -14,6 +14,8 @@ public class BattingSortBy {
 	public static final Comparator<BattingData> MAX_4S_AND_6S = Comparator
 			.comparing(batsman -> batsman.getNoOfFours() + batsman.getNoOfSixes());
 	
+	public static final Comparator<BattingData> MAX_RUNS = Comparator.comparing(BattingData::getRuns);
+	
 	public static Comparator<BattingData> addConditionsInOrder(Comparator<BattingData>...comparators){ 
 		if(comparators.length==0)
 			return null;

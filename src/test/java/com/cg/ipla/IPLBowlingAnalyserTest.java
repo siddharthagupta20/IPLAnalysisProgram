@@ -10,6 +10,7 @@ import com.cg.ipla.dto.BowlingData;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class IPLBowlingAnalyserTest {
 
@@ -30,6 +31,11 @@ public class IPLBowlingAnalyserTest {
 		System.out.println("-------------------------------------------");
 		assertEquals(100, bowlersList.get(bowlersList.size() - 1).getPosition());
 
+	}
+	@Test
+	public void givenBowlingData_ShouldReturnBowlerWithBestAverage() {
+		List<BowlingData> bowlers=iplAnalyser.sortingBowlers(BowlingSortBy.BEST_AVG);
+		assertEquals(75, bowlers.get(98).getPosition());
 	}
 
 }
