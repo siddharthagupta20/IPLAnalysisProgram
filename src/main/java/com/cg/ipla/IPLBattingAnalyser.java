@@ -35,16 +35,18 @@ public class IPLBattingAnalyser {
 	}
 
 	public List<BattingData> sortingAverageWise() {
-		Comparator<BattingData> comparatorBestAvg = Comparator.comparing(BattingData::getAverage);
-		List<BattingData> batsmenList = this.batsmenList;
-		return batsmenList.stream().sorted(comparatorBestAvg).collect(Collectors.toList());
+		
+		return batsmenList.stream().sorted(BattingSortBy.COMPARATOR_BEST_AVG).collect(Collectors.toList());
 
 	}
 
 	public List<BattingData> sortingStrinkingRateWise() {
-		Comparator<BattingData> comparatorMostStrikeRate = Comparator.comparing(BattingData::getStrikeRate);
-		List<BattingData> batsmenList = this.batsmenList;
-		return batsmenList.stream().sorted(comparatorMostStrikeRate).collect(Collectors.toList());
+		
+		return batsmenList.stream().sorted(BattingSortBy.COMPARATOR_STRIKE_RATE).collect(Collectors.toList());
 
+	}
+
+	public List<BattingData> sortingMax4sAnd6sWise() {
+		return batsmenList.stream().sorted(BattingSortBy.COMPARATOR_4S_AND_6S).collect(Collectors.toList());
 	}
 }

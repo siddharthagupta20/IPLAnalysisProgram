@@ -43,5 +43,8 @@ public class IPLAnalyserService {
 	public ArrayList<BattingData> batsmenWithMostStrikingRates() {
 		return (ArrayList<BattingData>)iplBatting.sortingStrinkingRateWise();
 	}
+	public List<BattingData> batsmenWithMax6sAnd4s() {
+		return iplBatting.sortingMax4sAnd6sWise();
+	}
 
 }
