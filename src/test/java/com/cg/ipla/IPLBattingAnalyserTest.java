@@ -44,4 +44,10 @@ public class IPLBattingAnalyserTest {
 		List<BattingData> batsmen=iplAnalyser.batsmenWithMostStrikingRates();
 		assertEquals("97", batsmen.get(100).getPosition());
 	}
+	@Test
+	public void givenBattingData_ShouldReturnBatsmenWithMax6sAnd4s() {
+		List<BattingData> batsmen=iplAnalyser.batsmenWithMax6sAnd4s();
+		assertEquals("5",batsmen.get(100).getPosition());
+		
+	}
 }
