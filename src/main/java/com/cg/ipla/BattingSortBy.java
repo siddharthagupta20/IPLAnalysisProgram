@@ -16,6 +16,8 @@ public class BattingSortBy {
 	
 	public static final Comparator<BattingData> MAX_RUNS = Comparator.comparing(BattingData::getRuns);
 	
+	public static final Comparator<BattingData> MAX_100S = Comparator.comparing(BattingData::getCentury);
+	
 	public static Comparator<BattingData> addConditionsInOrder(Comparator<BattingData>...comparators){ 
 		if(comparators.length==0)
 			return null;
