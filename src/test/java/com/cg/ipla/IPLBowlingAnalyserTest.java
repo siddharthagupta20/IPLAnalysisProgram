@@ -52,5 +52,10 @@ public class IPLBowlingAnalyserTest {
 		List<BowlingData> bowlers=iplAnalyser.sortingBowlersHaving4wsAnd5ws(BowlingSortBy.BEST_AVG);
 		assertEquals(29, bowlers.get(bowlers.size()-1).getPosition());
 	}
+	@Test
+	public void givenBowlingData_ShouldReturnBowlersWithBestStrikeRateAndGreatAverages() {
+		List<BowlingData> bowlers=iplAnalyser.sortingBowlers(BowlingSortBy.BEST_STRIKE_RATE,BowlingSortBy.BEST_AVG);
+		assertEquals(75, bowlers.get(98).getPosition());
+	}
 
 }
