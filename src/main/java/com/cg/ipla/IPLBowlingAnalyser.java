@@ -3,6 +3,7 @@ package com.cg.ipla;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.cg.ipla.dto.BowlingData;
@@ -34,6 +35,9 @@ public class IPLBowlingAnalyser {
 	}
 	public List<BowlingData> sortingBowlersOrder(Comparator<BowlingData> comparator) {
 		return bowlersList.stream().sorted(comparator).collect(Collectors.toList());
+	}
+	public <E> List<BowlingData> filteringBowlers(Predicate<BowlingData> p){
+		return bowlersList.stream().filter(p).collect(Collectors.toList());
 	}
 
 }
