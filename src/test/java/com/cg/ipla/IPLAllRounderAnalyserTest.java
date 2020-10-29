@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import com.cg.ipla.IPLAnalyserService.BowlingOrBatting;
 import com.cg.ipla.dto.AllRounder;
+import com.cg.ipla.dto.BattingData;
 
 public class IPLAllRounderAnalyserTest {
 	
@@ -33,6 +34,11 @@ public class IPLAllRounderAnalyserTest {
 		List<AllRounder> allRounders=iplAnalyser.sortingCricketers(AllRounderSortBy.MAX_RUNS,AllRounderSortBy.MAX_WICKETS);
 		assertEquals("Andre Russell",allRounders.get(allRounders.size()-1).getPlayer());
 		
+	}
+	@Test
+	public void givenBowlingAndBattingData_ShouldReturnCricketersWithMax100sAndBestAvgs() {
+		List<BattingData> batsmen=iplAnalyser.sortingBatsmen(BattingSortBy.MAX_100S,BattingSortBy.BEST_AVG);
+		assertEquals("25",batsmen.get(batsmen.size()-1).getPosition());
 	}
 
 }
