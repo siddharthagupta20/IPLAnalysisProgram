@@ -51,7 +51,7 @@ public class IPLAnalyserService {
 	}
 
 	public ArrayList<BattingData> sortingBatsmenNotHitting100sAnd50s(Comparator<BattingData>... comparators) {
-		Predicate<BattingData> notHit100sOr50s = batsman -> batsman.getCentury() == 0 || batsman.getHalfCentury() == 0;
+		Predicate<BattingData> notHit100sOr50s = batsman -> batsman.getCentury() == 0 && batsman.getHalfCentury() == 0;
 		return this.sortingBatsmenOnSpecificConditions(notHit100sOr50s, comparators);
 	}
 
