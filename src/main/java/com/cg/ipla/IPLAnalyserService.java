@@ -39,6 +39,21 @@ public class IPLAnalyserService {
 		Comparator<BattingData> comparator = BattingSortBy.addConditionsInOrder(comparators);
 		return (ArrayList<BattingData>) iplBatting.sortingBatsmenOrder(comparator);
 	}
+	public ArrayList<BattingData> sortingBatsmen(ArrayList<BattingData> list,Comparator<BattingData>... comparators) {
+		Comparator<BattingData> comparator = BattingSortBy.addConditionsInOrder(comparators);
+		return (ArrayList<BattingData>) new IPLBattingAnalyser(list).sortingBatsmenOrder(comparator);
+	}
+
+	public ArrayList<BattingData> sortingBatsmenOnSpecificConditions(Predicate<BattingData> p,
+																					Comparator<BattingData>... comparators) {
+		ArrayList<BattingData> filteredList = (ArrayList<BattingData>) iplBatting.filteringBatsmen(p);
+		return this.sortingBatsmen(filteredList,comparators);
+	}
+
+	public ArrayList<BattingData> sortingBatsmenNotHitting100sAnd50s(Comparator<BattingData>... comparators) {
+		Predicate<BattingData> notHit100sOr50s = batsman -> batsman.getCentury() == 0 && batsman.getHalfCentury() == 0;
+		return this.sortingBatsmenOnSpecificConditions(notHit100sOr50s, comparators);
+	}
 
 	public ArrayList<BowlingData> sortingBowlers(Comparator<BowlingData>... comparators) {
 		Comparator<BowlingData> comparator = BowlingSortBy.addConditionsInOrder(comparators);

@@ -3,6 +3,7 @@ package com.cg.ipla;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.cg.ipla.dto.BattingData;
@@ -39,5 +40,10 @@ public class IPLBattingAnalyser {
 							.sorted(comparator)
 							.collect(Collectors.toList());
 
+	}
+
+	public List<BattingData> filteringBatsmen(Predicate<BattingData> p) {
+		return batsmenList.stream().filter(p).collect(Collectors.toList());
+		
 	}
 }

@@ -40,5 +40,10 @@ public class IPLAllRounderAnalyserTest {
 		List<BattingData> batsmen=iplAnalyser.sortingBatsmen(BattingSortBy.MAX_100S,BattingSortBy.BEST_AVG);
 		assertEquals("25",batsmen.get(batsmen.size()-1).getPosition());
 	}
+	@Test
+	public void givenBowlingAndBattingData_ShouldReturnCricketersNotHitting100sOr50sButHavingGreatAvg() { 
+		List<BattingData> batsmen=iplAnalyser.sortingBatsmenNotHitting100sAnd50s(BattingSortBy.BEST_AVG);
+		assertEquals("37",batsmen.get(batsmen.size()-1).getPosition());
+	}
 
 }
