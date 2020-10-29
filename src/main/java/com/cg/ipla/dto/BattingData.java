@@ -102,4 +102,8 @@ public class BattingData {
 		return noOfSixes;
 	}
 	
+	public String toString() {
+		return player;
+	}
+	
 }
