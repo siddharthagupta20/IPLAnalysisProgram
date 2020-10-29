@@ -57,5 +57,10 @@ public class IPLBowlingAnalyserTest {
 		List<BowlingData> bowlers=iplAnalyser.sortingBowlers(BowlingSortBy.BEST_STRIKE_RATE,BowlingSortBy.BEST_AVG);
 		assertEquals(75, bowlers.get(98).getPosition());
 	}
+	@Test
+	public void givenBowlingData_ShouldReturnBowlersWithMaxWicketsAndGreatAverages() {
+		List<BowlingData> bowlers=iplAnalyser.sortingBowlers(BowlingSortBy.MAX_WKTS,BowlingSortBy.BEST_AVG);
+		assertEquals(1, bowlers.get(98).getPosition());
+	}
 
 }
