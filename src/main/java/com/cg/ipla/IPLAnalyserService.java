@@ -2,9 +2,9 @@ package com.cg.ipla;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 import java.util.function.Predicate;
 
+import com.cg.ipla.dto.AllRounder;
 import com.cg.ipla.dto.BattingData;
 import com.cg.ipla.dto.BowlingData;
 
@@ -58,6 +58,13 @@ public class IPLAnalyserService {
 	public ArrayList<BowlingData> sortingBowlersHaving4wsAnd5ws(Comparator<BowlingData>... comparators) {
 		Predicate<BowlingData> has4wsAnd5ws = bowlers -> bowlers.getFourWickets() != 0 || bowlers.getFiveWickets() != 0;
 		return this.sortingBowlersOnSpecificConditions(has4wsAnd5ws, comparators);
+	}
+	
+	public ArrayList<AllRounder> sortingCricketers(Comparator<AllRounder>... comparators){
+		 IPLAllRounderAnalyser iplara= new IPLAllRounderAnalyser();
+		 iplara.buildAllRounderList(iplBowling.bowlersList, iplBatting.batsmenList);
+		 Comparator<AllRounder> comparator=AllRounderSortBy.addConditionsInOrder(comparators);
+		 return (ArrayList<AllRounder>) iplara.sortingAllRoundersOrder(comparator);
 	}
 
 	public <E> void printData(ArrayList<E> list) {
