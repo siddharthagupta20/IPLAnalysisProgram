@@ -28,5 +28,11 @@ public class IPLAllRounderAnalyserTest {
 		assertEquals("Krishnappa Gowtham",allRounders.get(allRounders.size()-1).getPlayer());
 		
 	}
+	@Test
+	public void givenBowlingAndBattingData_ShouldReturnCricketersWithMaxRunsAndWickets() {
+		List<AllRounder> allRounders=iplAnalyser.sortingCricketers(AllRounderSortBy.MAX_RUNS,AllRounderSortBy.MAX_WICKETS);
+		assertEquals("Andre Russell",allRounders.get(allRounders.size()-1).getPlayer());
+		
+	}
 
 }
