@@ -3,6 +3,7 @@ package com.cg.ipla;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 import com.cg.ipla.dto.BattingData;
 import com.cg.ipla.dto.BowlingData;
@@ -39,10 +40,24 @@ public class IPLAnalyserService {
 		return (ArrayList<BattingData>) iplBatting.sortingBatsmenOrder(comparator);
 	}
 
-	public List<BowlingData> sortingBowlers(Comparator<BowlingData>... comparators) {
-		new BowlingSortBy();
+	public ArrayList<BowlingData> sortingBowlers(Comparator<BowlingData>... comparators) {
 		Comparator<BowlingData> comparator = BowlingSortBy.addConditionsInOrder(comparators);
 		return (ArrayList<BowlingData>) iplBowling.sortingBowlersOrder(comparator);
+	}
+	public ArrayList<BowlingData> sortingBowlers(ArrayList<BowlingData> list,Comparator<BowlingData>... comparators) {
+		Comparator<BowlingData> comparator = BowlingSortBy.addConditionsInOrder(comparators);
+		return (ArrayList<BowlingData>) new IPLBowlingAnalyser(list).sortingBowlersOrder(comparator);
+	}
+
+	public ArrayList<BowlingData> sortingBowlersOnSpecificConditions(Predicate<BowlingData> p,
+																					Comparator<BowlingData>... comparators) {
+		ArrayList<BowlingData> filteredList = (ArrayList<BowlingData>) iplBowling.filteringBowlers(p);
+		return this.sortingBowlers(filteredList,comparators);
+	}
+
+	public ArrayList<BowlingData> sortingBowlersHaving4wsAnd5ws(Comparator<BowlingData>... comparators) {
+		Predicate<BowlingData> has4wsAnd5ws = bowlers -> bowlers.getFourWickets() != 0 || bowlers.getFiveWickets() != 0;
+		return this.sortingBowlersOnSpecificConditions(has4wsAnd5ws, comparators);
 	}
 
 	public <E> void printData(ArrayList<E> list) {

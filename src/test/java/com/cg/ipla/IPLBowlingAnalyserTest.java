@@ -47,5 +47,10 @@ public class IPLBowlingAnalyserTest {
 		List<BowlingData> bowlers=iplAnalyser.sortingBowlers(BowlingSortBy.BEST_ECONOMY);
 		assertEquals(87, bowlers.get(98).getPosition());
 	}
+	@Test 
+	public void givenBowlingData_ShouldReturnBowlersWithBestAvgsAnd4wsAnd5ws() {
+		List<BowlingData> bowlers=iplAnalyser.sortingBowlersHaving4wsAnd5ws(BowlingSortBy.BEST_AVG);
+		assertEquals(29, bowlers.get(bowlers.size()-1).getPosition());
+	}
 
 }
